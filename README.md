@@ -1,6 +1,8 @@
 # Issues
 
-**TODO: Add description**
+This is a example developed by Dave Thomas in the chapter 13 of Programming Elixir 1.3. 
+I've decide create a different repository from the [book source](https://github.com/Trunkol/programming-elixir-1.3) because
+i'm wanna add anothers features. 
 
 ## Installation
 
