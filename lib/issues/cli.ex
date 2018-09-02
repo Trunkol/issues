@@ -7,7 +7,9 @@ defmodule Issues.CLI do
     table of the last _n_ issues in a github project
     """
     def run(argv) do
-      parse_args(argv)
+      argv
+      |> parse_args
+      |> process
     end
 
     @doc """
@@ -27,4 +29,25 @@ defmodule Issues.CLI do
            _ -> :help
         end
     end
+
+    def process(:help) do
+      IO.puts """
+      usage:  issues <user> <project> { count | #{@default_count}}
+      """
+      System.halt(0)
+    end
+
+    def process({user, project, _count}) do
+      Issues.GithubIssues.fetch(user, project)
+      |> decode_response
+    end
+
+    def decode_response({:ok, body}), do: body
+    
+    def decode_response({:error, error}) do
+      {_, message} = List.keyfind(error, "message", 0)
+      IO.puts "Error fetching from Github: #{message}"
+      System.halt(2)
+    end
+
 end
