@@ -5,10 +5,13 @@ defmodule Issues.MixProject do
     [
       app: :issues,
       escript: escript_config,
+      name: "Issues",
+      source_url: "https://github.com/trunkol/issues",
       version: "0.1.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+
     ]
   end
 
@@ -24,6 +27,9 @@ defmodule Issues.MixProject do
     [
       {:httpoison, "~> 0.9"},
       {:poison, "~> 2.2"},
+      {:ex_doc, "~> 0.12"},
+      {:earmark, "~> 1.0", override: true},
+
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
