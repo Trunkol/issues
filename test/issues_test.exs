@@ -1,6 +1,7 @@
 defmodule IssuesTest do
   use ExUnit.Case
   doctest Issues
+  doctest Issues.TableFormatter
 
   test "greets the world" do
     assert Issues.hello() == :world
